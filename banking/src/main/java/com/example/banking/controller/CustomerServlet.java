@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet(name  = "CustomerServlet", urlPatterns = "/customers")
@@ -21,31 +20,30 @@ public class CustomerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
-//        if (action == null) {
-//            action = "";
-//        }
+        if (action == null) {
+            action = "";
+        }
         switch (action){
             case "create":
                 showCreateForm(req, resp);
             case "update":
                 showUpdateForm(req, resp);
                 break;
-            case "deposit":
-                showDepositForm(req, resp);
-                break;
-            case "withdraw":
-                showWithdrawForm(req, resp);
-                break;
-            case "transfer":
-                showTransferForm(req, resp);
-                break;
+//            case "deposit":
+//                showDepositForm(req, resp);
+//                break;
+//            case "withdraw":
+//                showWithdrawForm(req, resp);
+//                break;
+//            case "transfer":
+//                showTransferForm(req, resp);
+//                break;
             case "suspend":
                 showSuspendForm(req, resp);
                 break;
-            case "transferHistory":
-                showTransferHistory(req, resp);
+//            case "transferHistory":
+//                showTransferHistory(req, resp);
             default:
-
                 showCustomersList(req,resp);
                 break;
         }
@@ -148,18 +146,18 @@ public class CustomerServlet extends HttpServlet {
 
 
 
-    private void showDepositForm(HttpServletRequest req, HttpServletResponse resp) {
-        int id = Integer.parseInt(req.getParameter("id"));
-
-        Customer existingCustomer = customerService.findById(id);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/transaction/deposit.jsp");
-        req.setAttribute("existingCustomer", existingCustomer);
-        try {
-            dispatcher.forward(req, resp);
-        } catch (ServletException | IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//    private void showDepositForm(HttpServletRequest req, HttpServletResponse resp) {
+//        int id = Integer.parseInt(req.getParameter("id"));
+//
+//        Customer existingCustomer = customerService.findById(id);
+//        RequestDispatcher dispatcher = req.getRequestDispatcher("/transaction/deposit.jsp");
+//        req.setAttribute("existingCustomer", existingCustomer);
+//        try {
+//            dispatcher.forward(req, resp);
+//        } catch (ServletException | IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     private void deposit(HttpServletRequest req, HttpServletResponse resp) {
         RequestDispatcher dispatcher = null;

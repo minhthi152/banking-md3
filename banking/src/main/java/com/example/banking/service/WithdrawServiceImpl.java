@@ -1,6 +1,6 @@
 package com.example.banking.service;
 
-import com.example.banking.model.Deposit;
+import com.example.banking.model.Withdraw;
 import com.example.banking.utils.MySQLConnection;
 
 import java.math.BigDecimal;
@@ -9,26 +9,26 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-public class DepositServiceImpl implements IDepositService {
+public class WithdrawServiceImpl implements IWithdrawService {
 
-    private static final String  SP_DEPOSIT = "CALL i_banking.sp_deposit(?, ?);";
+    private static final String  SP_WITHDRAW = "CALL i_banking.sp_thi_withdraw(?, ?, ?);";
     @Override
-    public List<Deposit> findAll() {
+    public List<Withdraw> findAll() {
         return null;
     }
 
     @Override
-    public void save(Deposit deposit) {
+    public void save(Withdraw withdraw) {
 
     }
 
     @Override
-    public Deposit findById(int id) {
+    public Withdraw findById(int id) {
         return null;
     }
 
     @Override
-    public boolean updateSp(Deposit deposit) throws SQLException {
+    public boolean updateSp(Withdraw withdraw) throws SQLException {
         return false;
     }
 
@@ -38,15 +38,15 @@ public class DepositServiceImpl implements IDepositService {
     }
 
     @Override
-    public void insert(Deposit deposit) {
+    public void insert(Withdraw withdraw) {
 
     }
 
     @Override
-    public boolean depositSp(int customerId, BigDecimal amount) {
+    public boolean withdrawSp(int customerId, BigDecimal amount) {
         try {
             Connection connection = MySQLConnection.getConnection();
-            CallableStatement callableStatement = connection.prepareCall(SP_DEPOSIT);
+            CallableStatement callableStatement = connection.prepareCall(SP_WITHDRAW);
 
             callableStatement.setInt(1, customerId);
             callableStatement.setBigDecimal(2, amount);

@@ -28,19 +28,19 @@
         <fieldset class="row g-3">
             <div class="col-md-6">
                 <label class="form-label">Customer ID</label>
-                <input type="text" class="form-control" id="fullName" name="fullName" value="">
+                <input type="text" class="form-control" id="customerId" name="customerId" value="${existingCustomer.getId()}">
             </div>
             <div class="col-md-6">
                 <label class="form-label">Full name</label>
-                <input type="text" class="form-control" id="email" name="email" value="">
+                <input type="text" class="form-control" id="fullName" name="fullName" value="${existingCustomer.getFullName()}">
             </div>
             <div class="col-md-6">
                 <label class="form-label">Current balance ($)</label>
-                <input type="tel" class="form-control" id="phone" name="phone" value="">
+                <input type="tel" class="form-control" id="balance" name="balance" value="${existingCustomer.getBalance()}">
             </div>
             <div class="col-md-6">
                 <label class="form-label">Transaction Amount ($)</label>
-                <input type="text" class="form-control" id="address" name="address" value="">
+                <input type="text" class="form-control" id="transactionAmount" name="transactionAmount" value="">
             </div>
 
             <div class="col-md-12" style="margin-top: 15px">

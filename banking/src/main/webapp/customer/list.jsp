@@ -62,21 +62,21 @@
                        </a>
                    </td>
                    <td>
-                       <a href="/customers?action=deposit&id=${customer.getId()}">
+                       <a href="/customers/deposit?id=${customer.getId()}">
                            <button class="btn btn-outline-success">
                                <i class="fa fa-plus" aria-hidden="true"></i>
                            </button>
                        </a>
                    </td>
                    <td>
-                       <a href = "/customers?action=withdraw&id=${customer.getId()}">
+                       <a href = "/customers/withdraw?id=${customer.getId()}">
                            <button class="btn btn-outline-warning">
                                <i class="fa fa-minus" aria-hidden="true"></i>
                            </button>
                        </a>
                    </td>
                    <td>
-                       <a href = "/customers?action=transfer&id=${customer.getId()}">
+                       <a href = "/customers/transfer?id=${customer.getId()}">
                            <button class="btn btn-outline-primary">
                                <i class="fa fa-exchange" aria-hidden="true"></i>
                            </button>

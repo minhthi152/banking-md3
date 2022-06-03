@@ -24,25 +24,25 @@
                 <div class="mb-3 col-md-3">
                     <label class="col-sm-12 col-form-label">Sender ID</label>
                     <div class="col-sm-12">
-                        <input type="text" class="form-control" readonly="" id="senderId" name="senderId" value="365">
+                        <input type="text" class="form-control" readonly="" id="senderId" name="senderId" value="${sender.getId()}">
                     </div>
                 </div>
                 <div class="mb-3 col-md-3">
                     <label class="col-sm-12 col-form-label">Sender Name</label>
                     <div class="col-sm-12">
-                        <input type="text" class="form-control" readonly="" id="senderName" name="senderName" value="Ariel Jones">
+                        <input type="text" class="form-control" readonly="" id="senderName" name="senderName" value="${sender.getFullName()}">
                     </div>
                 </div>
                 <div class="mb-3 col-md-3">
                     <label class="col-sm-12 col-form-label">Email</label>
                     <div class="col-sm-12">
-                        <input type="email" class="form-control" readonly="" id="email" name="email" value="sitamygad@mailinator.com">
+                        <input type="email" class="form-control" readonly="" id="senderEmail" name="senderEmail" value="${sender.getEmail()}">
                     </div>
                 </div>
                 <div class="mb-3 col-md-3">
                     <label class="col-sm-12 col-form-label">Sender balance</label>
                     <div class="col-sm-12">
-                        <input type="text" class="form-control num-space" readonly="" id="balance" name="balance" value="0">
+                        <input type="text" class="form-control num-space" readonly="" id="balance" name="balance" value="${sender.getBalance()}">
                     </div>
                 </div>
             </div>

@@ -55,15 +55,24 @@
         </fieldset>
     </form>
 
-<%--    <div class="footer">--%>
-<%--        <div id="message-alert">--%>
-<%--            <!-- <div class="alert-danger hide"> -->--%>
-<%--            <div class="alert-danger">--%>
-<%--                <h5>Please correct errors below FE:</h5>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-
+    <div class="footer">
+        <c:if test = "${isSuccesful}">
+            <div id="message-success">
+                <!-- <div class="alert-danger hide"> -->
+                <div class="alert-success">
+                    <h5>Successfully deposited:</h5>
+                </div>
+            </div>
+        </c:if>
+        <c:if test = "${!isSuccessful}">
+            <div id="message-error">
+                <!-- <div class="alert-danger hide"> -->
+                <div class="alert-danger">
+                    <h5>Failed Deposited</h5>
+                </div>
+            </div>
+        </c:if>
+    </div>
 </div>
 </body>
 </html>
