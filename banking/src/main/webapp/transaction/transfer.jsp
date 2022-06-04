@@ -1,5 +1,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,31 +52,28 @@
                     <label for="recipient_id" class="col-sm-12 col-form-label">Recipient Name</label>
                     <div class="col-sm-12">
                         <select id="recipient_id" class="form-select" name="recipientId">
-                            <option value="385">(385) Sierra Abbott</option>
-                            <option value="395">(395) Brian Frazier</option>
-                            <option value="405">(405) Emmanuel Owen</option>
-                            <option value="415">(415) Lionel Malone</option>
-                            <option value="425">(425) Colorado Abbott</option>
-                            <option value="435">(435) Valentine Luna</option>
+                            <c:forEach var="recipient" items="${recipients}">
+                                <option value="${recipient.getId()}">(${recipient.getId()}) ${recipient.getFullName()}</option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>
                 <div class="mb-3 col-md-3">
                     <label class="col-sm-12 col-form-label">Transfer Amount ($)</label>
                     <div class="col-sm-12">
-                        <input type="text" id="transferAmount" class="form-control num-space" name="transferAmount" value="">
+                        <input type="text" id="transferAmount" class="form-control num-space" name="transferAmount" value="${transferAmount}">
                     </div>
                 </div>
                 <div class="mb-3 col-md-3">
                     <label class="col-sm-12 col-form-label">Fees (%)</label>
                     <div class="col-sm-12">
-                        <input type="text" class="form-control num-space" value="10" readonly="">
+                        <input type="text" class="form-control num-space" id="fees" value="10" readonly="">
                     </div>
                 </div>
                 <div class="mb-3 col-md-3">
                     <label class="col-sm-12 col-form-label" style = "width: 253px;height: 38px;padding-right: 0px;padding-left: 0px;">Total amount of transaction ($)</label>
                     <div class="col-sm-12">
-                        <input type="text" class="form-control num-space" readonly="" id="transactionAmount" name="transactionAmount" value="">
+                        <input type="text" class="form-control num-space" readonly="" id="transactionAmount" name="transactionAmount" value="${transactionAmount}">
                     </div>
                 </div>
             </div>
@@ -92,6 +90,13 @@
         </fieldset>
     </form>
 </div>
+<script>
+    document.addEventListener("input", () =>{
+        let fee = Number(document.getElementById("fees").value);
+        let transferAmount = Number(document.getElementById("transferAmount").value);
+        document.getElementById("transactionAmount").value = (transferAmount*1.1).toFixed(2);
 
+    })
+</script>
 </body>
 </html>

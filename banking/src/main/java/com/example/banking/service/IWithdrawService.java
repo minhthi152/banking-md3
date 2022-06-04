@@ -19,5 +19,5 @@ public interface IWithdrawService extends IGeneralService <Withdraw> {
 
     void insert(Withdraw withdraw);
 
-    boolean withdrawSp(int customerId, BigDecimal amount);
+    String withdrawSp(int customerId, BigDecimal amount);
 }

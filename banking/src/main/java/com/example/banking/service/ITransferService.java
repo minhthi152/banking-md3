@@ -19,5 +19,5 @@ public interface ITransferService extends IGeneralService <Transfer> {
 
     void insert(Transfer transfer);
 
-    boolean transferSp(int customerId, BigDecimal amount);
+    String transferSp(int senderId, int recipientId, BigDecimal amount);
 }

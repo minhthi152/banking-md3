@@ -5,6 +5,19 @@
 <head>
     <title>Document</title>
     <%@ include file="/layout/head.jsp"%>
+    <style>
+        .footer{
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            margin-bottom: 0;
+            border-bottom: 0;
+            background-color: #f8d7da;
+            line-height: 100px;
+            display: none;
+        }
+    </style>
 </head>
 <body>
 <div class = "container">
@@ -28,15 +41,15 @@
         <fieldset class="row g-3">
             <div class="col-md-6">
                 <label class="form-label">Customer ID</label>
-                <input type="text" class="form-control" id="customerId" name="customerId" value="${existingCustomer.getId()}">
+                <input type="text" readonly class="form-control" id="customerId" name="customerId" value="${existingCustomer.getId()}">
             </div>
             <div class="col-md-6">
                 <label class="form-label">Full name</label>
-                <input type="text" class="form-control" id="fullName" name="fullName" value="${existingCustomer.getFullName()}">
+                <input type="text" readonly class="form-control" id="fullName" name="fullName" value="${existingCustomer.getFullName()}">
             </div>
             <div class="col-md-6">
                 <label class="form-label">Current balance ($)</label>
-                <input type="tel" class="form-control" id="balance" name="balance" value="${existingCustomer.getBalance()}">
+                <input type="tel" readonly class="form-control" id="balance" name="balance" value="${existingCustomer.getBalance()}">
             </div>
             <div class="col-md-6">
                 <label class="form-label">Transaction Amount ($)</label>
@@ -44,7 +57,7 @@
             </div>
 
             <div class="col-md-12" style="margin-top: 15px">
-                <button type="submit" id="btnCreateCustomer" class="btn btn-outline-warning">
+                <button type="submit" id="btnCreateCustomer" class="btn btn-outline-warning" onclick="showMessage()">
                     <i class="fa-solid fa-minus"></i>
                     Withdraw
                 </button>
@@ -52,15 +65,18 @@
         </fieldset>
     </form>
 
-<%--    <div class="footer">--%>
-<%--        <div id="message-alert">--%>
-<%--            <!-- <div class="alert-danger hide"> -->--%>
-<%--            <div class="alert-danger">--%>
-<%--                <h5>Please correct errors below FE:</h5>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
+
 
 </div>
+<div class="footer" id ="footer">
+    <div id="message-alert">
+        <div class="alert-danger">
+            <h5>${withdrawMessage}</h5>
+        </div>
+    </div>
+</div>
+<script>
+
+</script>
 </body>
 </html>

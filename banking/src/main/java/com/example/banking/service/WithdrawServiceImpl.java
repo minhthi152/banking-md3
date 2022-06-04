@@ -43,21 +43,27 @@ public class WithdrawServiceImpl implements IWithdrawService {
     }
 
     @Override
-    public boolean withdrawSp(int customerId, BigDecimal amount) {
+    public String withdrawSp(int customerId, BigDecimal amount) {
         try {
             Connection connection = MySQLConnection.getConnection();
+            //SP_WITHDRAW = "CALL i_banking.sp_thi_withdraw(?, ?, ?);";
             CallableStatement callableStatement = connection.prepareCall(SP_WITHDRAW);
+
 
             callableStatement.setInt(1, customerId);
             callableStatement.setBigDecimal(2, amount);
 
-            callableStatement.executeUpdate();
+            callableStatement.registerOutParameter(3, java.sql.Types.VARCHAR);
 
+            callableStatement.executeUpdate();
+            String message = callableStatement.getString(3);
+            System.out.println(this.getClass() + " message: " + message);
+
+            return message;
         } catch (SQLException e) {
-            return false;
+            return null;
         }
 
-        return true;
     }
 
 }

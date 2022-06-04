@@ -34,12 +34,17 @@ public class WithdrawServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/transaction/withdraw.jsp");
+
         IWithdrawService withdrawService = new WithdrawServiceImpl();
         int id = Integer.parseInt(req.getParameter("customerId"));
+        Customer existingCustomer = customerService.findById(id);
+        req.setAttribute("existingCustomer", existingCustomer);
+
         BigDecimal transactionAmount = new BigDecimal(req.getParameter("transactionAmount"));
-        boolean withdrawed = withdrawService.withdrawSp(id,transactionAmount);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/transaction/withdraw.jsp");
-        req.setAttribute("isSuccessful", withdrawed);
+        String withdrawMessage = withdrawService.withdrawSp(id,transactionAmount);
+        req.setAttribute("withdrawMessage", withdrawMessage);
+
         dispatcher.forward(req, resp);
     }
 }

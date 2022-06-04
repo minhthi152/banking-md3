@@ -50,7 +50,6 @@ public class DepositServiceImpl implements IDepositService {
 
             callableStatement.setInt(1, customerId);
             callableStatement.setBigDecimal(2, amount);
-
             callableStatement.executeUpdate();
 
         } catch (SQLException e) {

@@ -76,7 +76,7 @@
                        </a>
                    </td>
                    <td>
-                       <a href = "/customers/transfer?id=${customer.getId()}">
+                       <a href = "/customers/transfer?senderId=${customer.getId()}">
                            <button class="btn btn-outline-primary">
                                <i class="fa fa-exchange" aria-hidden="true"></i>
                            </button>

@@ -46,9 +46,14 @@ public class DepositServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         IDepositService depositService = new DepositServiceImpl();
         int id = Integer.parseInt(req.getParameter("customerId"));
+        Customer existingCustomer = customerService.findById(id);
+
+
         BigDecimal transactionAmount = new BigDecimal(req.getParameter("transactionAmount"));
         boolean deposited = depositService.depositSp(id,transactionAmount);
+
         RequestDispatcher dispatcher = req.getRequestDispatcher("/transaction/deposit.jsp");
+        req.setAttribute("existingCustomer", existingCustomer);
         req.setAttribute("isSuccessful", deposited);
         dispatcher.forward(req, resp);
     }
